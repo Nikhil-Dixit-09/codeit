@@ -6,5 +6,6 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 console.log("Router setup complete!!");
 router.get('/',homeController.home);
-router.use('/user',require('./users'));
+router.use('/users',require('./users'));
+
 module.exports=router;
