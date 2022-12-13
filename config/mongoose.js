@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-
+mongoose.set('strictQuery', true);
 mongoose.connect('mongodb://localhost/codeinit_development');
 
 const db=mongoose.connection;

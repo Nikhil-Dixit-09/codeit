@@ -7,8 +7,8 @@ module.exports.home=function(req,res){
 }
 module.exports.signin=function(req,res){
     console.log('in sign in');
-    console.log(req.cookies);
-    res.cookie('user_id',25);
+    // console.log(req.cookies);
+    // res.cookie('user_id',25);
     return res.render('u_sign_in',{
         title: "User Sign in"
     });
@@ -47,11 +47,16 @@ module.exports.create=function(req,res){
     
 }
 module.exports.createSession=function(req,res){
-    console.log('in user session');
-    console.log(req.body);
-    
-    return res.render('u_sign_in',{
-        title: "User Sign in"
-    });
+    res.redirect('/');
 }
+module.exports.signout=function(req,res){
+    req.logout(function(err){
+        if(err){
+            console.log('error');
+            return;
+        }
+        return res.redirect('/');
+    });
+    
+}   
 //asdf
