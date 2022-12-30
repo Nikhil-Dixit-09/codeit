@@ -16,9 +16,9 @@ passport.deserializeUser((googleId, done) => {
 });
 //tell passport to use a strategy for a google login and signup
 passport.use(new googleStrategy({
-        clientID: env.google_clientID,
-        clientSecret: env.google_clientSecret,
-        callbackURL: env.google_callbackURL
+        clientID: '133487419438-53er0mss9ieffj0avk07gjb0i8io9vsr.apps.googleusercontent.com',
+        clientSecret: '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',
+        callbackURL: "http://localhost:8000/users/auth/google/callback"
 },function(accessToken,refreshToken,profile,done){
     //find a user
     User.findOne({email: profile.emails[0].value}).exec(function(err,user){
