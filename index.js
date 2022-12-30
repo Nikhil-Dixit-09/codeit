@@ -1,6 +1,5 @@
 const express=require('express');
 const env=require('./config/environment');
-const logger=require('morgan');
 const cookieParser=require('cookie-parser');
 const app=express();
 const port=process.env.CODEIT_PORT||8000;
@@ -30,13 +29,9 @@ const customMware=require('./config/middleware');
 //   chatServer.listen(5000);
 app.use(cookieParser());
 
-app.use(express.static(env.asset_path));
+app.use(express.static('./assets'));
 //make the upload path available to the browser
 app.use('/uploads',express.static(__dirname+'/uploads'));
-
-
-app.use(logger(env.morgan.mode,env.morgan.options));
-
 app.use(expressLayouts);
 
 //extract style and scripts from the sub pages into the layout
@@ -49,7 +44,7 @@ app.set('views','./views');
 app.use(session({
     name: 'codeit',
     //toDo in production
-    secret: env.session_cookie,
+    secret: "abcdefg",
     saveUninitialized: false,
     resave: false,
     cookie:{

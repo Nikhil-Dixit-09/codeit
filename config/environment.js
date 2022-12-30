@@ -1,15 +1,15 @@
-const fs=require('fs');
-const rfs=require('rotating-file-stream');
-const path=require('path');
+// const fs=require('fs');
+// const rfs=require('rotating-file-stream');
+// const path=require('path');
 
 
-const logDirectory=path.join(__dirname,'../production_logs');
-fs.existsSync(logDirectory)||fs.mkdirSync(logDirectory);
+// const logDirectory=path.join(__dirname,'../production_logs');
+// fs.existsSync(logDirectory)||fs.mkdirSync(logDirectory);
 
-const accessLogStream=rfs.createStream('access.log',{
-    interval: '1d',
-    path: logDirectory
-});
+// const accessLogStream=rfs.createStream('access.log',{
+//     interval: '1d',
+//     path: logDirectory
+// });
 
 
 const development={
@@ -30,11 +30,7 @@ const development={
     google_clientID: '133487419438-53er0mss9ieffj0avk07gjb0i8io9vsr.apps.googleusercontent.com',
     google_clientSecret: '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',
     google_callbackURL: "http://localhost:8000/users/auth/google/callback",
-    jwtSecret: 'codeial',
-    morgan: {
-        mode: 'dev',
-        options: {stream: accessLogStream}
-    }
+    jwtSecret: 'codeial'
 }
 const producution={
     name: 'production',
@@ -54,10 +50,6 @@ const producution={
     google_clientID: process.env.CODEIT_GOOGLE_CLIENTID,
     google_clientSecret: process.env.CODEIT_GOOGLE_CLIENT_SECRET,
     google_callbackURL: process.env.CODEIT_GOOGLE_CALLBACK,
-    jwtSecret: process.env.CODEIT_JWT_SECRET,
-    morgan: {
-        mode: 'combined',
-        options: {stream: accessLogStream}
-    }
+    jwtSecret: process.env.CODEIT_JWT_SECRET
 }
 module.exports=producution;
