@@ -1,7 +1,7 @@
 const { populate } = require('../models/post');
 var Post=require('../models/post');
 var User=require('../models/user');
-const { post } = require('../routes');
+// const { post } = require('../routes');
 module.exports.home=async function(req,res){
     try{
         let posts=await Post.find({}).sort('-createdAt')
@@ -22,6 +22,7 @@ module.exports.home=async function(req,res){
             console.log(posts[0].comments[j].likes[z]);
         }
     }
+    
     return res.render('home',{
         title: "Codeit | Home",
         Posts: posts,

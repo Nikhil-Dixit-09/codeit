@@ -1,5 +1,6 @@
-var Post=require('../models/post')
-var Comment=require('../models/comment')
+var Post=require('../models/post');
+var Comment=require('../models/comment');
+
 var commentMailer=require('../mailers/comments');
 var Like=require('../models/like');
 module.exports.create=async function(req,res){
