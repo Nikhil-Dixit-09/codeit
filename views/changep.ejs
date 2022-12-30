@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="/css/changep.css">
+<form action="/users/changeIt" method="post">
+    <div>
+        <label for="password" class="label">Password: </label>
+        <input type="password" placeholder="Enter New Password" name="password" required class="input" >
+    </div>
+    <div>
+        <label for="password" class="label">Confirm Password: </label>
+        <input type="password" placeholder="Enter Password Again" name="confirmpassword" required class="input">
+    </div>
+    <input type="hidden" name="token" value="<%= token %>">
+    <div>   
+        <button type="submit">Change Password</button>
+    </div>
+</form>

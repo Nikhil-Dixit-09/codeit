@@ -1,4 +1,77 @@
-/* body{
+body{
     margin: 0;
+}
+.layout li{
+    display: inline;
+}
+.layout ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.layout li a{
+    /* display: block; */
+    color: white;
     text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+.layout #flex{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 255, 0.5);
+    height: 8vh;
+    padding: 4px;
+}
+/* li a{
+   display: block; 
 } */
+.layout li a:hover{
+    background-color: rgba(0, 0, 255, 0.33);
+}
+.layout #coral{
+    color: whitesmoke;
+    cursor: default;
+}
+main{
+    min-height: 92vh;
+}
+.layout #flex3{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 255, 0.5);
+    height: 8vh;
+}
+.layout #auto{
+    display: flex;
+    align-items: center;
+}
+.layout #trickster{
+    font-size: 1.5rem;
+    color: whitesmoke;
+    padding: 4px;
+    /* cursor: default; */
+    cursor: default;
+}
+.layout li{
+    color: whitesmoke;
+    cursor: default;
+}
+@keyframes fade-out{
+    0%{opacity: 1;}
+    100%{opacity: 0;}
+}
+.layout h5{
+    animation: fade-out 3.5s ease-in;
+    animation-iteration-count: 1;
+    position: absolute;
+    top: 5%;
+    left: 77%;
+    background-color: cyan;
+    font-family: cursive;
+    font-weight: normal;
+    cursor: default;
+    font-size: large;   
+}

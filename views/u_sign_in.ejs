@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="/css/signin.css">
 <h1>Sign In</h1>
-<div id="flex">
+<div id="flex1">
+    <!-- <% var a="Str"; %> -->
     <form action="/users/create-session" method="post">
         <div>
             <label for="email" class="label">Username: </label>
-            <input type="email" placeholder="Enter Username" name="email" required class="input">
+            <input type="email" placeholder="Enter Username" name="email" required class="input" onchange="">
         </div>
         <div>
             <label for="password" class="label">Password: </label>
@@ -13,8 +14,23 @@
         <div>   
             <button type="submit">Login</button>
         </div>
+         
     </form>
-   
-    
-
+    <div>
+        
+        <a href="/users/resetP">
+        <button>
+            Forgot Password
+        </button>
+        </a>
+    </div>
 </div>
+<p>
+    <a href="/users/auth/google">Google SignIn/SignUp</a>
+</p>
+<script>
+    function myfunction(val){
+        a=val;
+        console.log(a);
+    }
+</script>

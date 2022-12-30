@@ -1,3 +1,8 @@
 body{
     background-color: lightblue;
 }
+#image img{
+    height: 20vh;
+    width: 20vw;
+    object-fit: contain;
+}

@@ -1,19 +1,28 @@
+<!-- <link rel="stylesheet" href="/css/header.css"> -->
 <header>
-   Page header
-    <ul>
-        <% if(locals.user){ %>
-            <li><%= user.name %></li>
-            <li>
-                <a href="/users/signout">signout</a>
-
-            </li>
-        <% }else{ %>
-            <li>
-                <a href="/users/signin">signin</a>
-            </li>
-            <li>
-                <a href="/users/signup">signup</a>
-            </li>
-        <% } %>
-    </ul>
+    <div id="flex">
+        <div id="coral">
+            Codeit
+       </div>
+       <div >
+        <ul>
+            <% if(locals.user){ %>
+                <li><%= user.name %></li>
+                <li>
+                    <a href="/users/signout">SignOut</a>
+    
+                </li>
+            <% }else{ %>
+                <li>
+                    <a href="/users/signin">SignIn</a>
+                </li>
+                <li>
+                    <a href="/users/signup">SignUp</a>
+                </li>
+            <% } %>
+        </ul>
+       </div>
+    </div>
+   
+    
 </header>

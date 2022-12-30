@@ -1,3 +1,29 @@
-body{
-    background-color: aqua;
+#Freinds a{
+    text-decoration: none;
+    color: black;
 }
+#Freinds{
+    width: 24vw;
+    background-color: aquamarine;
+}
+#Posts{
+    width: 75vw;
+    border-right: 1px solid rgba(119, 136, 153, 0.284);
+    min-height: 92vh;
+    background-color: aqua;
+    opacity: 0.9;
+}
+#flex{
+    display: flex;
+    flex-direction: row;
+}
+.like{
+    background-color: white;
+    padding: 4px 3px;
+    cursor: pointer;
+    border: 2px solid lightblue;
+}
+
+
+
+

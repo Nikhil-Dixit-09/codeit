@@ -1,0 +1,106 @@
+<ul id="postsLi" >
+    <% for(var i=0;i<Posts.length;i++){ %>
+        
+        <li id="post-<%= Posts[i].id %>">
+            <p>
+                <span>
+                    <%= Posts[i].content %>
+                </span> 
+                <br>
+                <small>
+                        <%= Posts[i].user.name %>
+                </small>
+                <br>
+                <% if(locals.user){ %>
+                <% var abcd=-1; %>
+                <% for(var j=0;j<Posts[i].likes.length;j++){ %>
+                   <% if(locals.user){ %>
+                     <%   if(Posts[i].likes[j].user==locals.user.id){ %>
+                         <%   abcd=j; %>
+                           <% break; %>
+                       <% } %>
+                   <% } %>
+                    
+                <% } %>
+                <% if(abcd==-1){ %>
+                    <% if(locals.user){ %>
+                        <button value="<%= Posts[i].id %>" class="like ajax post" user="<%= locals.user %>"  ><%= Posts[i].likes.length %> likes</button> 
+                    <% } %>
+                    
+                <% }else{ %>
+                    <% if(locals.user){ %>
+                        <button value="<%= Posts[i].id %>" class="like ajax post" user="<%= locals.user %>"  style="background: #4CAF50"  ><%= Posts[i].likes.length %> likes</button> 
+                    <% } %>
+                    
+                <% } %>
+                <% }else{ %>
+                    <button value="<%= Posts[i].id %>" class="like ajax post" user="<%= locals.user %>" disabled  ><%= Posts[i].likes.length %> likes</button>
+                <% } %>
+                <br>
+                <% if(locals.user){ %> 
+                  <% if(locals.user.id==Posts[i].user.id){ %>
+                <a href="/posts/delete?pid=<%= Posts[i].id %>" class="delete-post-button"><button>X</button></a>
+                <% } %>
+                <% } %>
+
+               <% if(locals.user){ %>
+                <form action="/comments/create" method="post" class="createComment">
+                    <textarea name="content" id="" cols="30" rows="2" placeholder="Type Here..."></textarea>
+                    <input type="hidden" name="pid" value="<%= Posts[i].id %>">
+                    <!-- <input type="hidden" name="uid" value="<%= Posts[i].user %>"> -->
+                    <input type="submit" value="Comment">
+                </form>
+               <% } %>
+               <div class="post-comment-list">
+                <ul id="comment-<%= Posts[i].id %>">
+                   <% for(var j=Posts[i].comments.length-1;j>=0;j--){ %>
+                        <li id="comment-<%= Posts[i].comments[j].id %>">
+                            <%= Posts[i].comments[j].content; %>
+                            <br>
+                            <small>
+                                <%= Posts[i].comments[j].user.name %>
+                            </small>
+                            <br>
+                            <% if(locals.user){ %>
+                                <% var abcd=-1; %>
+                                <% for(var z=0;z<Posts[i].comments[j].likes.length;z++){ %>
+                                   <% if(locals.user){ %>
+                                     <%   if(Posts[i].comments[j].likes[z].user==locals.user.id){ %>
+                                         <%   abcd=z; %>
+                                           <% break; %>
+                                       <% } %>
+                                   <% } %>
+                                    
+                                <% } %>
+                                <% if(abcd==-1){ %>
+                                    <% if(locals.user){ %>
+                                        <button value="<%= Posts[i].comments[j].id  %>" class="like ajax comment" user="<%= locals.user %>"  ><%= Posts[i].comments[j].likes.length  %> likes</button> 
+                                    <% } %>
+                                    
+                                <% }else{ %>
+                                    <% if(locals.user){ %>
+                                        <button value="<%= Posts[i].comments[j].id  %>" class="like ajax comment" user="<%= locals.user %>"  style="background: #4CAF50"  ><%= Posts[i].comments[j].likes.length  %> likes</button> 
+                                    <% } %>
+                                    
+                                <% } %>
+                                <% }else{ %>
+                                    <button value="<%= Posts[i].comments[j].id  %>" class="like ajax comment" user="<%= locals.user %>" disabled  ><%= Posts[i].comments[j].likes.length  %> likes</button>
+                                <% } %>
+
+                            <% var a=2; %>
+                            <% if((locals.user&&Posts[i].comments[j].user.id==locals.user.id)||(locals.user&&Posts[i].user.id==locals.user.id)){ %>
+                                <% a=1; %>
+                                <a href="/comments/delete?cid=<%= Posts[i].comments[j].id %>&pid=<%= Posts[i].id%>&check=<%= a %>" class="commentDel">
+                                    <button>Delete</button>
+                                </a>
+                            <% } %>
+                        </li>
+                    <% } %>
+                </ul>
+
+               </div>
+            </p>
+           
+        </li>
+    <% } %>
+    </ul>
