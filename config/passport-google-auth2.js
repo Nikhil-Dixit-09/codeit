@@ -1,6 +1,7 @@
 const passport=require('passport');
 const googleStrategy=require('passport-google-oauth').OAuth2Strategy;
 const crypto=require('crypto');
+const env=require('./environment');
 const User=require('../models/user');
 passport.serializeUser((user, done) => {
     console.log('juio');
@@ -15,9 +16,9 @@ passport.deserializeUser((googleId, done) => {
 });
 //tell passport to use a strategy for a google login and signup
 passport.use(new googleStrategy({
-        clientID: '133487419438-53er0mss9ieffj0avk07gjb0i8io9vsr.apps.googleusercontent.com',
-        clientSecret: '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',
-        callbackURL: "http://localhost:8000/users/auth/google/callback"
+        clientID: env.google_clientID,
+        clientSecret: env.google_clientSecret,
+        callbackURL: env.google_callbackURL
 },function(accessToken,refreshToken,profile,done){
     //find a user
     User.findOne({email: profile.emails[0].value}).exec(function(err,user){

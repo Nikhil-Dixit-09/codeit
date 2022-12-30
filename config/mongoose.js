@@ -1,6 +1,7 @@
 const mongoose=require('mongoose');
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://localhost/codeinit_development');
+const env=require('./environment');
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 const db=mongoose.connection;
 
